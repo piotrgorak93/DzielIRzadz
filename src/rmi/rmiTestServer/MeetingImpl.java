@@ -25,5 +25,14 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         return new Matrix(m, n, p, q);
     }
 
+    @Override
+    public int[][] addMatrix(Matrix matrix1, Matrix matrix2) throws RemoteException {
+        int[][] sum = new int[matrix1.matrixField.length][matrix2.matrixField.length];
+        for (int c = 0; c < matrix1.matrixField.length; c++)
+            for (int d = 0; d < matrix1.matrixField.length; d++)
+                sum[c][d] = matrix1.matrixField[c][d] + matrix2.matrixField[c][d];  //replace '+' with '-' to subtract matrices
+        return sum;
+    }
+
 
 }
