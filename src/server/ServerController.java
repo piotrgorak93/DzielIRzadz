@@ -5,7 +5,7 @@ package server;
  */
 public class ServerController {
     public static void main(String[] args) {
-        new Matrix(40, 20, 20, 80);
-//        new Thread(new ServerThread()).start();
+//        new Matrix(40, 20, 20, 80);
+        new Thread(new ServerThread()).start();
     }
 }

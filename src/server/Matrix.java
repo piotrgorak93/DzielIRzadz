@@ -1,14 +1,17 @@
 package server;
 
+import java.io.Serializable;
 import java.util.Random;
 import java.util.Scanner;
 
-class Matrix {
+public class Matrix implements Serializable {
+    public int[][] matrixField;
+
     public Matrix(int m, int n, int p, int q) {
         main(m, n, p, q);
     }
 
-    public void main(int m, int n, int p, int q) {
+    public int[][] main(int m, int n, int p, int q) {
         int sum = 0, c, d, k;
 
         Scanner in = new Scanner(System.in);
@@ -58,6 +61,23 @@ class Matrix {
 
                 System.out.print("\n");
             }
+            matrixField = multiply;
+            return multiply;
         }
+        return null;
+    }
+
+    public String matrixToString() {
+        String toReturn = "";
+        for (int[] ints : matrixField) {
+            for (int anInt : ints) {
+                toReturn += anInt;
+                toReturn += "\t";
+            }
+            toReturn += "\n";
+
+        }
+        return toReturn;
+
     }
 }

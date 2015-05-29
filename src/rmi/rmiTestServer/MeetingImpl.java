@@ -1,6 +1,7 @@
 package rmi.rmiTestServer;
 
 import rmi.rmiTestMeeting.IMeeting;
+import server.Matrix;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,10 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         return "Witaj na serwerze";
     }
 
+    @Override
+    public Matrix multMatrix(int m, int n, int p, int q) throws RemoteException {
+        return new Matrix(m, n, p, q);
+    }
 
 
 }
