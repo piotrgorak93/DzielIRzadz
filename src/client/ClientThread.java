@@ -3,6 +3,7 @@ package client;
 import rmi.rmiTestClient.MeetingClient;
 import rmi.rmiTestMeeting.IMeeting;
 import server.Matrix;
+import server.RandomMatrixGenerator;
 
 import java.rmi.RemoteException;
 
@@ -37,9 +38,35 @@ public class ClientThread implements Runnable {
         System.out.println("C*D");
         System.out.println(resultCMulD.matrixToString());
         System.out.println("SUMA:");
-        System.out.println(suma);
+        //  System.out.println(suma);
+//        String toPrint = "";
+//        for (int[] ints : suma) {
+//            for (int anInt : ints) {
+//                toPrint += anInt;
+//                toPrint += "\t";
+//            }
+//            toPrint += "\n";
+//        }
+
+        //System.out.println(toPrint);
+        printMatrix(suma);
+        int[][] e = new RandomMatrixGenerator(40, 60).getResult();
+        printMatrix(e);
+        System.out.println("FINAL RESULT:");
+        int[][] finalResult = new int[0][];
+        try {
+            finalResult = meeting.performFinalMul(suma, e);
+        } catch (RemoteException e1) {
+            e1.printStackTrace();
+        }
+        printMatrix(finalResult);
+
+    }
+
+    public void printMatrix(int[][] matrix) {
         String toPrint = "";
-        for (int[] ints : suma) {
+
+        for (int[] ints : matrix) {
             for (int anInt : ints) {
                 toPrint += anInt;
                 toPrint += "\t";
@@ -47,6 +74,5 @@ public class ClientThread implements Runnable {
             toPrint += "\n";
         }
         System.out.println(toPrint);
-
     }
 }

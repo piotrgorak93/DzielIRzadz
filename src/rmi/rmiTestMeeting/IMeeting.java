@@ -12,4 +12,5 @@ public interface IMeeting extends Remote {
 
     int[][] addMatrix(Matrix matrix1, Matrix matrix2) throws RemoteException;
 
+    int[][] performFinalMul(int[][] sumFirst, int[][] e) throws RemoteException;
 }

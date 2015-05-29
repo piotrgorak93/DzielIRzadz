@@ -2,30 +2,29 @@ package server;
 
 import java.io.Serializable;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Matrix implements Serializable {
     public int[][] matrixField;
 
     public Matrix(int m, int n, int p, int q) {
-        main(m, n, p, q);
+        multiplyMatrix(m, n, p, q);
     }
 
-    public int[][] main(int m, int n, int p, int q) {
+    public int[][] multiplyMatrix(int m, int n, int p, int q) {
         int sum = 0, c, d, k;
 
-        Scanner in = new Scanner(System.in);
+        //  Scanner in = new Scanner(System.in);
 //        System.out.println("Enter the number of rows and columns of first matrix");
         Random rand = new Random();
 
 
-        int first[][] = new int[m][n];
-
+//        int first[][] = new int[m][n];
+        int first[][] = new RandomMatrixGenerator(m, n).getResult();
         System.out.println("Enter the elements of first matrix");
 
-        for (c = 0; c < m; c++)
-            for (d = 0; d < n; d++)
-                first[c][d] = rand.nextInt((10) + 1);
+//        for (c = 0; c < m; c++)
+//            for (d = 0; d < n; d++)
+//                first[c][d] = rand.nextInt((10) + 1);
 
         System.out.println("Enter the number of rows and columns of second matrix");
 
@@ -33,7 +32,8 @@ public class Matrix implements Serializable {
         if (n != p)
             System.out.println("Matrices with entered orders can't be multiplied with each other.");
         else {
-            int second[][] = new int[p][q];
+//            int second[][] = new int[p][q];
+            int second[][] = new RandomMatrixGenerator(p, q).getResult();
             int multiply[][] = new int[m][q];
 
             System.out.println("Enter the elements of second matrix");
@@ -41,6 +41,8 @@ public class Matrix implements Serializable {
             for (c = 0; c < p; c++)
                 for (d = 0; d < q; d++)
                     second[c][d] = rand.nextInt((10) + 1);
+
+            //Algorytm mnozenia macierzy
 
             for (c = 0; c < m; c++) {
                 for (d = 0; d < q; d++) {

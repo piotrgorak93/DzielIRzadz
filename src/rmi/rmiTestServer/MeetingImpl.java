@@ -34,5 +34,19 @@ public class MeetingImpl extends UnicastRemoteObject implements IMeeting {
         return sum;
     }
 
-
+    @Override
+    public int[][] performFinalMul(int[][] sumFirst, int[][] e) {
+        int sumLocal = 0;
+        int[][] multiply = new int[sumFirst.length][e.length];
+        for (int c = 0; c < sumFirst.length; c++) {
+            for (int d = 0; d < e.length; d++) {
+                for (int k = 0; k < e.length; k++) {
+                    sumLocal = sumLocal + sumFirst[c][k] * e[k][d];
+                }
+                multiply[c][d] = sumLocal;
+                sumLocal = 0;
+            }
+        }
+        return multiply;
+    }
 }
