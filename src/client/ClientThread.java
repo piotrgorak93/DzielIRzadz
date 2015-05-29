@@ -1,7 +1,5 @@
 package client;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 import rmi.rmiTestClient.MeetingClient;
 import rmi.rmiTestMeeting.IMeeting;
 
@@ -19,20 +17,23 @@ public class ClientThread implements Runnable {
 
     @Override
     public void run() {
-        Multimap<String, HashMap> map = HashMultimap.create();
-        map.put()
         meeting = new MeetingClient().connectToServer();
         try {
             System.out.println(meeting.writeServerResponse());
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+        //A
         listaMacierzy.put(new int[]{60, 20}, createMatrix(60, 20));
+        //B
         listaMacierzy.put(new int[]{20, 40}, createMatrix(20, 40));
+        //C
         listaMacierzy.put(new int[]{60, 60}, createMatrix(60, 60));
+        //D
         listaMacierzy.put(new int[]{60, 40}, createMatrix(60, 40));
+        //E
         listaMacierzy.put(new int[]{40, 60}, createMatrix(40, 60));
-  
+
 
         try {
             meeting.addTwoMatrixes(listaMacierzy.get("A"), listaMacierzy.get("B"));
